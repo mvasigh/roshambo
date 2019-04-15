@@ -1,12 +1,17 @@
-import React, { useEffect } from 'react';
-import axios from '~/src/services/axios';
+import React from 'react';
+import { socket } from '~/src/services';
 
 const Home = props => {
-  useEffect(() => {
-    axios.get('/').then(({ data }) => console.log(data));
-  }, []);
+  const handleClick = () => {
+    socket.emit('load message', 'mehdi', 'mel', data => console.log(data));
+  };
 
-  return <div>Home view</div>;
+  return (
+    <div>
+      Home view <br />
+      <button onClick={handleClick}>Click me</button>
+    </div>
+  );
 };
 
 export default Home;
