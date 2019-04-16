@@ -3,6 +3,8 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const cors = require('cors');
 
+const { CONNECTION, CREATE_GAME, DISCONNECT } = require('./shared/constants');
+
 app.use(cors());
 
 app.get('/', (req, res) => {
@@ -11,14 +13,14 @@ app.get('/', (req, res) => {
   });
 });
 
-io.on('connection', socket => {
+io.on(CONNECTION, socket => {
   console.log(`New connection ID: ${socket.id}`);
 
-  socket.on('load message', (firstName, secondName, fn) => {
-    fn(`${firstName} loves ${secondName}`);
+  socket.on(CREATE_GAME, () => {
+    console.log('creating a new game');
   });
 
-  socket.on('disconnect', () => {
+  socket.on(DISCONNECT, () => {
     console.log('a user disconnected');
   });
 });
