@@ -1,5 +1,6 @@
 import React from 'react';
 import { socket } from '~/src/services';
+import { View } from '~/src/components';
 
 const Home = props => {
   const handleClick = () => {
@@ -7,10 +8,10 @@ const Home = props => {
   };
 
   return (
-    <div>
+    <View>
       Home view <br />
       <button onClick={handleClick}>Click me</button>
-    </div>
+    </View>
   );
 };
 
