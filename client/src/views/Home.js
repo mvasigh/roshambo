@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import { Link } from '@reach/router';
 // import { socket } from '~/src/services';
-import { View } from '~/src/components';
+import { View, Button } from '~/src/components';
 import { axios } from '~/src/services';
 import { CLIENT_API_URL } from '~/src/shared/constants';
 
@@ -15,7 +16,15 @@ const Home = props => {
   return (
     <View>
       Home view <br />
-      <button onClick={handleClick}>Click me</button>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+      >
+        <Button onClick={handleClick}>Create Room</Button>
+        <Button onClick={handleClick}>Join Room</Button>
+      </div>
     </View>
   );
 };
